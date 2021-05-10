@@ -5,7 +5,7 @@ let team2 = [];
 
 const cambiaFase = (destino) => {
     
-    let arrFase = ["fase1","fase2"];
+    let arrFase = ["fase1","fase2","fase3"];
 
     arrFase = arrFase.filter(val => !destino.includes(val));
 
@@ -18,7 +18,29 @@ const cambiaFase = (destino) => {
 };
 
 const chooseFighter = (fighter) => {
-    team1.push(allPlayers[fighter]);
 
-    console.log(team1);
+
+    if(team2.length < 2){
+
+        if(team1.length < 2){
+            team1.push(allPlayers[fighter]);
+            
+        } else {
+            
+            team2.push(allPlayers[fighter]);
+
+            if(team2.length == 2){
+                console.log("ESTE ES EL TEAM1 ", team1);
+                console.log("ESTE ES EL TEAM2 ", team2);
+                cambiaFase("fase3");
+            }
+            
+        }
+        
+        document.getElementById(fighter).onclick = "";
+        document.getElementById(fighter).className = "seleccionado";
+
+        
+    }
+        
 }
